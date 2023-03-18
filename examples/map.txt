@@ -1,0 +1,10 @@
+0101 forest "Foxtear Woods"
+0102 desert
+0103 water
+0201 water "Mirror Lake"
+0202 desert
+0301 water
+0401 water
+0501 water
+0302 water
+0303 desert
