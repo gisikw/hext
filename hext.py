@@ -4,8 +4,12 @@ import svgwrite
 import re
 import sys
 import cairosvg
+import yaml
 
 LABEL_BOTTOM_PADDING = 4
+
+with open("terrain.yml", 'r') as f:
+    terrain_colors = yaml.safe_load(f)
 
 def parse_hexmap_input(input_file):
     hexmap = []
@@ -49,12 +53,6 @@ def draw_hexmap_svg(hexmap, output_file, size=100):
     height = int(hex_height * (max_row + 0.5))
 
     dwg = svgwrite.Drawing(output_file, (width, height), debug=True)
-
-    terrain_colors = {
-        'forest': 'green',
-        'water': 'blue',
-        'desert': 'orange',
-    }
 
     for row, col, terrain, label in hexmap:
         x, y = hex_to_pixel(size, row, col)
