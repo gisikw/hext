@@ -5,6 +5,8 @@
 0202 desert
 0301 water
 0401 water
+0402 desert
 0501 water
 0302 water
 0303 desert
+0101-0202-0301-0402 red
