@@ -1,6 +1,6 @@
 import re
 from dataclasses import dataclass
-from hextile import Hextile
+from hext.hextile import Hextile
 
 @dataclass(frozen=True)
 class Path:

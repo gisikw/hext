@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
-
 import svgwrite
 import sys
 import cairosvg
-from hextile import Hextile
-from path import Path
+from hext.hextile import Hextile
+from hext.path import Path
 
 def parse_hexmap_input(input_file):
     hexmap = []
@@ -39,7 +37,12 @@ def draw_hexmap_svg(hexmap, paths, output_file, size=100):
     dwg.save()
     return output_file
 
-def main(input_file):
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: hext input.txt")
+        sys.exit(1)
+
+    input_file = sys.argv[1]
     output_file_base = input_file.rsplit('.', 1)[0]
     svg_output_file = f'{output_file_base}.svg'
     png_output_file = f'{output_file_base}.png'
@@ -47,11 +50,3 @@ def main(input_file):
     hexmap, paths = parse_hexmap_input(input_file)
     svg_output = draw_hexmap_svg(hexmap, paths, svg_output_file)
     cairosvg.svg2png(url=svg_output, write_to=png_output_file)
-
-if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Usage: hext input.txt")
-        sys.exit(1)
-
-    input_file = sys.argv[1]
-    main(input_file)
